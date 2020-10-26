@@ -1,0 +1,62 @@
+strict digraph G {
+	rankdir=LR
+	margin=0
+	splines=false
+	esep=10
+	
+	node [fontsize=10 shape=box width=0.1 height=0.1 margin="0.1,0.1"]
+	edge [fontsize=10]
+	
+	client [label="Client" shape=underline]
+	
+	{
+		rank=same
+		r0a [label="⋮" shape=plain]
+		r00 [label="Tor Router #10"]
+		r01 [label="Tor Router #11"]
+		r02 [label="Tor Router #12"]
+		r0b [label="⋮" shape=plain]
+		
+		edge [style=invis]
+		r0a -> r00 -> r01 -> r02 -> r0b
+	}
+	
+	{
+		rank=same
+		r1a [label="⋮" shape=plain]
+		r10 [label="Tor Router #20"]
+		r11 [label="Tor Router #21"]
+		r12 [label="Tor Router #22"]
+		r1b [label="⋮" shape=plain]
+		
+		edge [style=invis]
+		r1a -> r10 -> r11 -> r12 -> r1b
+	}
+	
+	{
+		rank=same
+		r2a [label="⋮" shape=plain]
+		r20 [label="Tor Router #30"]
+		r21 [label="Tor Router #31"]
+		r22 [label="Tor Router #32"]
+		r2b [label="⋮" shape=plain]
+		
+		edge [style=invis]
+		r2a -> r20 -> r21 -> r22 -> r2b
+	}
+	
+	server [label="Server" shape=underline]
+	
+	subgraph cluster_0 {
+		edge [style=invis]
+		r00 -> r10 -> r20
+		r01 -> r11 -> r21
+		r02 -> r12 -> r22
+	}
+	
+	edge [arrowhead=vee arrowtail=vee colorscheme=paired8 dir=both]
+	client -> r00 [color="black:6:2:4"]
+	r00:e -> r12:w [color="black:6:2"]
+	r12:e -> r21:w [color="black:6"]
+	r21:e -> server:w
+}

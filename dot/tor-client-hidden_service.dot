@@ -1,0 +1,80 @@
+digraph G {
+	rankdir=LR
+	margin=0
+	splines=true
+	esep=10
+	
+	node [fontsize=10 shape=box width=0.1 height=0.1 margin="0.1,0.1"]
+	edge [fontsize=10]
+	
+	client [label="Client" shape=underline]
+	
+	{
+		rank=same
+		r0a [label="⋮" shape=plain]
+		r00 [label="Tor Router #10"]
+		r01 [label="Tor Router #11"]
+		r02 [label="Tor Router #12"]
+		r03 [label="Tor Router #13"]
+		r0b [label="⋮" shape=plain]
+		
+		edge [style=invis]
+		r0a -> r00 -> r01 -> r02 -> r03 -> r0b
+	}
+	
+	{
+		rank=same
+		r1a [label="⋮" shape=plain]
+		r10 [label="Tor Router #20"]
+		r11 [label="Tor Router #21"]
+		r12 [label="Tor Router #22"]
+		r13 [label="Tor Router #23"]
+		r1b [label="⋮" shape=plain]
+		
+		edge [style=invis]
+		r1a -> r10 -> r11 -> r12 -> r13 -> r1b
+	}
+	
+	{
+		rank=same
+		r2a [label="⋮" shape=plain]
+		r20 [label="Tor Router #30"]
+		r21 [label="Tor Router #31"]
+		r22 [label="Tor Router #32"]
+		r23 [label="Tor Router #33"]
+		r2b [label="⋮" shape=plain]
+		
+		edge [style=invis]
+		r2a -> r20 -> r21 -> r22 -> r23 -> r2b
+	}
+	
+	server [label="Server" shape=underline]
+	
+	subgraph cluster_0 {
+		edge [style=invis]
+		r00 -> r10 -> r20
+		r01 -> r11 -> r21
+		r02 -> r12 -> r22
+	}
+	
+	edge [arrowhead=vee arrowtail=vee colorscheme=paired8 dir=both]
+	client -> r00:w [color="black:6:2:4"]
+	
+	r00 -> r11 [color="black:6:2"]
+	r11:w -> r01:e [color="black:6" headlabel="(1)" labeldistance="1.5" labelangle=-45 fontsize=9]
+
+	r00:e -> r10:w [color="black:6:2"]
+	r10:e -> r20:w [color="black:6" headlabel="(2)" labeldistance="1.5" labelangle=45 fontsize=9]
+
+	edge [arrowhead=vee arrowtail=vee colorscheme=paired8]
+	r23 -> server [style=invis]
+	server:w -> r23 [color="black:8:2:4"]
+
+	r23 -> r12 [color="black:8:2"]
+	r12:e -> r22 [color="black:8"]
+	r22:e -> r20:e [color="black" headlabel="(3)" labeldistance="1.5" labelangle=-45 fontsize=9]
+	
+	r23 -> r13 [color="black:8:2"]
+	r13 -> r03 [color="black:8:2"]
+	r03:w -> r01:w [color="black" headlabel="(4)" labeldistance="1.5" labelangle=45 fontsize=9]
+}
