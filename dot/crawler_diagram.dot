@@ -1,0 +1,95 @@
+digraph G {
+	#rankdir=RL
+	margin=0
+	splines=true
+	esep=10
+	
+	graph [fontname="Consolas"]
+	node [fontsize=9 fontname="Consolas" shape=box width=0.1 height=0.1 margin="0.1,0.1"]
+	edge [fontsize=9 fontname="Consolas"]
+	
+	{
+	    rank = same
+    	temp0 [shape=point style=invis width=0]
+    	temp1 [shape=point style=invis width=0]
+	}
+	
+	subgraph cluster_0 {
+	    label = "Access"
+		style = dashed
+		color = lightgrey
+		margin = 5
+		
+		c0_0 [label="Page Link"]
+		c0_1 [label="HTTP request"]
+		c0_2 [label="Pass CAPTCHA" shape=point]
+		c0_3 [label="HTTP request"]
+		c0_end [label="Download" shape=point]
+		
+		c0_0:sw -> c0_1:nw [headlabel="Make Request" labeldistance=3.25 labelangle=-90]
+		c0_1:sw -> c0_2:nw [headlabel="Has CAPTCHA" labeldistance=3.1 labelangle=-88]
+		c0_2 -> c0_3:nw [headlabel="Pass Check" labeldistance=3.1 labelangle=-80]
+		c0_1:se -> c0_3:ne [headlabel="No CAPTCHA" labeldistance=4.5 labelangle=54]
+		
+		
+		c0_3 -> c0_end [headlabel="Download" labeldistance=3 labelangle=48]
+	}
+	
+	subgraph cluster_1 {
+	    label = "Download"
+		style = dashed
+		color = lightgrey
+		margin = 5
+		
+		#c1_start [label="Download" shape=point]
+		c1_1 [label="Page Data"]
+		c1_2 [label="Page Data\n+ CSS, Images, etc."]
+		c1_3 [label="Extract Links" shape=point]
+		c1_4 [label="Persist" shape=point]
+		
+		#c1_start -> c1_1 [headlabel="Download" labeldistance=3 labelangle=-45]
+		c1_1:sw -> c1_2:n [headlabel="Download\nLinked" labeldistance=4.0 labelangle=46 minlen=2]
+		c1_1 -> c1_3:n [headlabel="Extract" labeldistance=2.8 labelangle=48]
+		c1_2 -> c1_4:n [headlabel="Persist" labeldistance=2.8 labelangle=48]
+	}
+	
+	subgraph cluster_2 {
+	    label = "Extract"
+		style = dashed
+		color = lightgrey
+		margin = 5
+		
+		#c2_start [label="Extract Links" shape=point]
+		c2_1 [label="Links"]
+		c2_2 [label="Links"]
+		c2_3 [label="Links"]
+		c2_4 [label="Reschedule" shape=point]
+		c2_5 [label="Persist" shape=point]
+		
+		#c2_start -> c2_1
+		c2_1 -> c2_2 [headlabel="Filter" labeldistance=2.9 labelangle=51]
+		c2_2 -> c2_3 [headlabel="Rank\nand Sort" labeldistance=3.4 labelangle=46]
+		c2_3 -> c2_4:n [headlabel="Schedule" labeldistance=3 labelangle=48]
+		c2_3 -> c2_5:n [headlabel="Persist" labeldistance=2.8 labelangle=-42]
+	}
+	
+	subgraph cluster_3 {
+	    label = "Persist"
+		style = dashed
+		color = lightgrey
+		margin = 5
+		
+		c3_1 [label="Links"]
+		c3_2 [label="Page Data\n+ CSS, Images, etc."]
+		c3_3 [label="Archive"]
+		c3_4 [label="Store" shape=point]
+		c3_5 [label="Store" shape=point]
+		
+		c3_1 -> c3_5 [headlabel="Store" labeldistance=2.4 labelangle=38]
+		c3_5 -> c3_2 [style=invis]
+		c3_2 -> c3_3 [headlabel="Compress" labeldistance=3 labelangle=48]
+		c3_3 -> c3_4 [headlabel="Store" labeldistance=2.4 labelangle=38]
+	}
+	
+	#c1_1 -> c2_start [constraint=false]
+}

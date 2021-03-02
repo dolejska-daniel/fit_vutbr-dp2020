@@ -1,0 +1,15 @@
+digraph G {
+	rankdir=RL
+	margin=0
+	#splines=ortho
+	esep=10
+	
+	graph [fontname="Consolas"]
+	node [fontsize=9 fontname="Consolas" shape=box height=0.1 margin="0.1,0.1"]
+	edge [fontsize=9 fontname="Consolas"]
+	
+    host -> website [arrowhead="onormal" arrowsize="0.75" headlabel="1" taillabel="N" labeldistance="1.1" labelangle="-50"]
+    page -> host [arrowhead="onormal" arrowsize="0.75" headlabel="1" taillabel="N" labeldistance="1.1" labelangle="-50"]
+    listing:w -> page:ne [arrowhead="onormal" arrowsize="0.75" headlabel="1" taillabel="N" labeldistance="1.1" labelangle="-50"]
+    source:w -> page:se [arrowhead="onormal" arrowsize="0.75" headlabel="1" taillabel="N" labeldistance="1.1" labelangle="50"]
+}

@@ -1,0 +1,56 @@
+digraph G {
+	#rankdir=RL
+	margin=0
+	#splines=ortho
+	esep=10
+	
+	graph [fontname="Consolas"]
+	node [fontsize=9 fontname="Consolas" shape=box height=0.1 margin="0.2,0.1"]
+	edge [fontsize=9 fontname="Consolas"]
+	
+    #host -> website [arrowhead="onormal" headlabel="1" taillabel="N" labeldistance="1.1" labelangle="-50"]
+    
+    "/"
+    
+    {
+        rank = same
+        "/external" [label="https://external-site.com"]
+        "/contact"
+        "/category"
+        "/additional" [shape=none label=…]
+    }
+    
+    {
+        rank = same
+        "/category/1"
+        "/category/2"
+        "/category/additional" [shape=none label=…]
+    }
+    
+    {
+        rank = same
+        "/listing/1a"
+        "/listing/1b"
+        "/listing/1additional" [shape=none label=…]
+        "/listing/2a"
+        "/listing/2b"
+        "/listing/2additional" [shape=none label=…]
+    }
+    
+    "/" -> "/category":n
+    "/category" -> "/category/1":n
+    "/category" -> "/category/2":n
+    "/category" -> "/category/additional":n
+    
+    "/category/1" -> "/listing/1a":n
+    "/category/1" -> "/listing/1b":n
+    "/category/1" -> "/listing/1additional":n
+    
+    "/category/2" -> "/listing/2a":n
+    "/category/2" -> "/listing/2b":n
+    "/category/2" -> "/listing/2additional":n
+    
+    "/" -> "/external":n
+    "/" -> "/contact":n
+    "/" -> "/additional":n
+}

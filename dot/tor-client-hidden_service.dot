@@ -75,6 +75,6 @@ digraph G {
 	r22:e -> r20:e [color="black" headlabel="(3)" labeldistance="1.5" labelangle=-45 fontsize=9]
 	
 	r23 -> r13 [color="black:8:2"]
-	r13 -> r03 [color="black:8:2"]
+	r13 -> r03 [color="black:8"]
 	r03:w -> r01:w [color="black" headlabel="(4)" labeldistance="1.5" labelangle=45 fontsize=9]
 }
