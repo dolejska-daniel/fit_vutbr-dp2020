@@ -5,7 +5,7 @@ build:
 	@mkdir -p ../build/dot
 	@for file in *.dot ; do \
 		echo Processing "$$file"; \
-		dot -Tpdf "$$file" -o"../build/dot/$${file%.dot}.pdf" ; \
+		dot -Tpdf "$$file" -o"../build/$${file%.dot}.pdf" ; \
 	done
 
 clean:
