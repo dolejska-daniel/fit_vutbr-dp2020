@@ -1,12 +1,13 @@
 # Master's Thesis / Diplomová práce
-Anonymisation software, like Tor or I2P, creates a suitable environment for criminality to thrive on the Internet.
-Dark marketplaces (aka cryptomarkets) are one such example of criminal activities.
-They act as an intermediary in trade of illegal goods and services.
-This thesis focuses on forensic analysis of such web services and subsequent extraction of non-trivial information about the realised orders and payments from selected marketplaces.
-The main goal is the ability to pinpoint the time interval when an order has been completed on selected marketplaces and its following correlation with cryptocurrency blockchains.
+Overlay networks (like Tor or I2P) create a suitable environment for criminality to thrive on the Internet.
+Dark marketplaces (a.k.a. cryptomarkets) are one such example of criminal activities.
+They act as an intermediary in the trade of illegal goods and services.
+This project focuses on forensic analysis of such web services and subsequent extraction of non-trivial information about the realised orders and payments from selected marketplaces.
+The main goal is to pinpoint the time interval when an order has been completed on selected marketplaces and its following correlation with cryptocurrency blockchains.
 The implemented program provides fully automated non-stop monitoring of selected cryptomarkets.
-This, under certain conditions, allows detection of realised orders, detailed product and vendor monitoring and collection of various meta-data entries.
-Acquired data can be used by law enforcement agencies as a support evidence regarding operation of the selected cryptomarkets and their vendors.
+That, under certain conditions, allows detection of realised purchases, detailed product and vendor monitoring and collection of various meta-data entries.
+Law enforcement agencies can use acquired data as support evidence regarding the operation of selected cryptomarkets and their vendors.
+The obtained information can also indicate current trends in products supply and demand.
 
 ## Thesis Assessment ([official page](https://www.youtube.com/watch?v=9jK-NcRmVcw))
 | Type                  | Grade | Description                                   |
